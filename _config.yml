@@ -1,5 +1,4 @@
 title: My Blog
 description: A blog powered by Jekyll and GitHub Pages
-theme: minima
+theme: jekyll-theme-cayman
 markdown: kramdown
-  
