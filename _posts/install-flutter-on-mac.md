@@ -1,3 +1,7 @@
+---
+title: "Install Flutter on mac"
+---
+
 # Installing Flutter on macOS: A Comprehensive Guide
 
 Flutter is a popular open-source UI software development kit created by Google. It is used to develop applications for Android, iOS, Linux, Mac, Windows, Google Fuchsia, and the web from a single codebase. This guide will walk you through the process of installing Flutter on your macOS machine, setting up your development environment, and getting ready to build your first Flutter application.
