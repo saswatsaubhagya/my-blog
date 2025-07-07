@@ -65,6 +65,12 @@ body {
   }
   
   .site-nav {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: nowrap !important;
+    
     .page-link {
       color: rgba(255, 255, 255, 0.9) !important;
       font-weight: 500;
@@ -81,6 +87,13 @@ body {
       }
     }
   }
+}
+
+.site-header .site-nav .trigger {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: center;
 }
 
 // Modern Post Layout
@@ -526,6 +539,19 @@ body {
   }
 }
 
+.site-footer .social-media-list {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: center;
+  padding-left: 0;
+  margin: 0;
+}
+
+.site-footer .social-media-list li {
+  margin-bottom: 0;
+}
+
 // Hero section
 .hero-section {
   background: var(--gradient-bg);
@@ -876,9 +902,14 @@ body {
     }
     
     .site-nav {
+      flex-direction: row !important;
+      gap: 1rem;
+      justify-content: center;
+      
       .page-link {
-        font-size: 0.9rem;
-        padding: 0.5rem;
+        font-size: 1rem;
+        padding: 0.5rem 0.5rem;
+        white-space: nowrap;
       }
     }
   }
@@ -1213,8 +1244,22 @@ body {
 }
 
 .site-header .wrapper {
-  max-width: none !important;
-  width: 90% !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 70px;
+}
+
+.site-header .site-nav {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: nowrap !important;
+}
+
+.site-header .site-title {
+  margin-right: auto;
 }
 
 .site-footer .wrapper {
@@ -1257,4 +1302,28 @@ main {
   width: 90% !important;
   max-width: none !important;
   margin: 0 auto !important;
+}
+
+// Ensure header navigation is always in a row
+.site-header .site-nav {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  flex-wrap: nowrap !important;
+}
+
+// Make sure links don't stack on mobile
+@media (max-width: 480px) {
+  .site-header .site-nav {
+    flex-direction: row !important;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .site-header .site-nav .page-link {
+    font-size: 1rem;
+    padding: 0.5rem 0.5rem;
+    white-space: nowrap;
+  }
 }

@@ -50,7 +50,6 @@ permalink: /about/
 }
 
 .about-text h2 {
-  color: var(--text-primary);
   margin-bottom: 1.5rem;
   font-size: 2rem;
 }
