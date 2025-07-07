@@ -1,5 +1,6 @@
 ---
 title: "Install Flutter on mac"
+date: 2022-01-02
 ---
 
 # Installing Flutter on macOS: A Comprehensive Guide
