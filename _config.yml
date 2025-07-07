@@ -1,5 +1,33 @@
-title: My Blog
-description: A blog powered by Jekyll and GitHub Pages
+title: Saswat Saubhagya
+description: "Full-Stack Developer & Tech Enthusiast | Sharing insights on Flutter, Web Development, and Software Engineering"
+url: "https://saswatsaubhagya.in"
+baseurl: ""
+author: "Saswat Saubhagya"
+email: "contact@saswatsaubhagya.in"
+
+# Theme and styling
 theme: minima
 markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+
+# SEO and social
+twitter_username: saswatsaubhagya
+github_username: saswatsaubhagya
+linkedin_username: saswatsaubhagya
+
+# Custom settings
+show_excerpts: true
+date_format: "%B %d, %Y"
+
+# Navigation
+header_pages:
+  - about.md
+  - portfolio.md
+
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
   
