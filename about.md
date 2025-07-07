@@ -4,15 +4,6 @@ title: About
 permalink: /about/
 ---
 
-<div class="hero-section">
-  <div class="hero-content">
-    <h1 class="hero-title">About Me</h1>
-    <p class="hero-subtitle">
-      Full-Stack Developer passionate about creating innovative solutions and sharing knowledge
-    </p>
-  </div>
-</div>
-
 <div class="about-content">
   <div class="about-text">
     <h2>👋 Hello, I'm Saswat Saubhagya</h2>
@@ -22,17 +13,6 @@ permalink: /about/
       My journey in technology started with curiosity and has evolved into a career focused on building 
       meaningful applications that solve real-world problems.
     </p>
-
-    <h3>🚀 What I Do</h3>
-    <p>
-      I specialize in modern web development and mobile app development, with particular expertise in:
-    </p>
-    <ul>
-      <li><strong>Frontend Development:</strong> React, Vue.js, Angular, and modern CSS frameworks</li>
-      <li><strong>Backend Development:</strong> Node.js, Python, Java, and various database technologies</li>
-      <li><strong>Mobile Development:</strong> Flutter and React Native for cross-platform apps</li>
-      <li><strong>Cloud Technologies:</strong> AWS, Google Cloud, and containerization with Docker</li>
-    </ul>
 
     <h3>💡 My Philosophy</h3>
     <p>
@@ -47,18 +27,6 @@ permalink: /about/
       taught me so much. Whether you're a beginner starting your coding journey or an experienced 
       developer looking for new perspectives, I hope my articles provide value and inspiration.
     </p>
-
-    <h3>🎯 Current Focus</h3>
-    <p>
-      Currently, I'm diving deep into:
-    </p>
-    <ul>
-      <li>Advanced Flutter development patterns and state management</li>
-      <li>Modern JavaScript frameworks and their ecosystem</li>
-      <li>DevOps practices and CI/CD pipelines</li>
-      <li>Performance optimization techniques</li>
-      <li>Open source contributions</li>
-    </ul>
 
     <h3>📫 Let's Connect</h3>
     <p>

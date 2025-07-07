@@ -12,8 +12,7 @@ highlighter: rouge
 permalink: /:year/:month/:day/:title/
 
 # SEO and social
-twitter_username: saswatsaubhagya
-github_username: saswatsaubhagya
+
 linkedin_username: saswatsaubhagya
 
 # Custom settings
@@ -23,7 +22,6 @@ date_format: "%B %d, %Y"
 # Navigation
 header_pages:
   - about.md
-  - portfolio.md
 
 # Build settings
 plugins:

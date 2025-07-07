@@ -1,13 +1,13 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.3.2"
-gem "minima", "~> 2.5"
+# Use GitHub Pages gem for compatibility
+gem "github-pages", group: :jekyll_plugins
 
-group :jekyll_plugins do
-  gem "jekyll-feed"
-  gem "jekyll-sitemap"
-  gem "jekyll-seo-tag"
-end
+# If you want to use Jekyll native, uncomment the line below
+# gem "jekyll", "~> 4.3.2"
+
+# Minima theme
+gem "minima", "~> 2.5"
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
