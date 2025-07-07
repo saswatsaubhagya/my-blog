@@ -1,4 +1,9 @@
+---
+---
+
 @import "minima";
+
+
 
 // Custom variables
 :root {
@@ -13,6 +18,10 @@
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --gradient-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --code-bg: #f3f4f6;
+  --code-text: #374151;
+  --code-block-bg: #1f2937;
+  --code-block-text: #f9fafb;
 }
 
 // Reset and base styles
@@ -21,10 +30,12 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.7;
   color: var(--text-primary);
   background-color: var(--bg-light);
+  margin: 0;
+  padding: 0;
 }
 
 // Header improvements
@@ -32,11 +43,21 @@ body {
   background: var(--gradient-bg);
   border-bottom: none;
   box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   
   .site-title {
     color: white !important;
     font-weight: 700;
     font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    i {
+      font-size: 1.2rem;
+    }
     
     &:hover {
       color: rgba(255, 255, 255, 0.9) !important;
@@ -47,10 +68,460 @@ body {
     .page-link {
       color: rgba(255, 255, 255, 0.9) !important;
       font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      
+      i {
+        font-size: 0.9rem;
+      }
       
       &:hover {
         color: white !important;
       }
+    }
+  }
+}
+
+// Modern Post Layout
+.post {
+  max-width: 1600px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.post-header {
+  background: var(--gradient-bg);
+  color: white;
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  
+  .post-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+  
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .category, .tag {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+    }
+    
+    .reading-time {
+      font-weight: 500;
+    }
+  }
+}
+
+// Make all text in post-header except the title white
+.post-header > *:not(.post-title) {
+  color: white !important;
+}
+
+// Make all meta elements in post-header white (dates, tags, categories, reading time)
+.post-header .post-meta,
+.post-header .post-meta *,
+.post-header .post-meta time,
+.post-header .post-meta .category,
+.post-header .post-meta .tag,
+.post-header .post-meta .reading-time,
+.post-header .post-meta .post-categories,
+.post-header .post-meta .post-tags,
+.post-header .post-meta i {
+  color: white !important;
+}
+
+// Ensure the post title keeps its original color (if needed, adjust as desired)
+.post-header .post-title {
+  color: white !important;
+}
+
+.post-content {
+  padding: 3rem 2rem;
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  p {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+  
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+    
+    &:hover {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
+  }
+  
+  code {
+    background: var(--code-bg);
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--code-text);
+    font-family: 'JetBrains Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
+    border: 1px solid #e5e7eb;
+    font-weight: 500;
+  }
+  
+  pre {
+    background: var(--code-block-bg);
+    color: var(--code-block-text);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border: 1px solid #374151;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    
+    code {
+      background: none;
+      color: inherit;
+      padding: 0;
+      border: none;
+      font-weight: 400;
+    }
+  }
+  
+  // Syntax highlighting for code blocks
+  .highlight {
+    background: var(--code-block-bg);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    position: relative;
+    
+    pre {
+      margin: 0;
+      border: none;
+      box-shadow: none;
+    }
+  }
+  
+  // Copy button for code blocks
+  .copy-button {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--code-block-text);
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    z-index: 10;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+    
+    &.copied {
+      background: rgba(34, 197, 94, 0.2);
+      border-color: rgba(34, 197, 94, 0.3);
+      color: #22c55e;
+    }
+    
+    i {
+      font-size: 0.875rem;
+    }
+  }
+  
+  // Ensure pre blocks have relative positioning for copy button
+  pre {
+    position: relative;
+    
+    .copy-button {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+    }
+  }
+  
+  // Ensure highlight blocks also have relative positioning
+  .highlight {
+    position: relative;
+    
+    .copy-button {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+    }
+  }
+  
+  ul, ol {
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+    
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+  }
+  
+  blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    margin: 1.5rem 0;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    th {
+      background: var(--bg-light);
+      font-weight: 600;
+    }
+  }
+}
+
+.post-footer {
+  border-top: 1px solid var(--border-color);
+  padding: 2rem;
+  background: var(--bg-light);
+  
+  .post-author {
+    margin-bottom: 2rem;
+    
+    .author-info {
+      background: var(--bg-card);
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: var(--shadow);
+      
+      h4 {
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+      
+      p {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+      }
+      
+      .author-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        
+        a {
+          color: var(--primary-color);
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          
+          &:hover {
+            color: var(--secondary-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+.post-navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+  
+  .prev-post, .next-post {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .nav-content {
+      .nav-label {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 500;
+      }
+      
+      .nav-title {
+        font-weight: 600;
+        color: var(--text-primary);
+        display: block;
+        margin-top: 0.25rem;
+      }
+    }
+    
+    i {
+      color: var(--primary-color);
+    }
+  }
+  
+  .next-post {
+    text-align: right;
+    
+    .nav-content {
+      order: 1;
+    }
+    
+    i {
+      order: 2;
+    }
+  }
+}
+
+// Enhanced Footer
+.site-footer {
+  background: var(--text-primary);
+  color: white;
+  padding: 3rem 0 1rem;
+  margin-top: 4rem;
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .footer-section {
+    h3, h4 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-description {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+    }
+    
+    .social-media-list, .footer-links {
+      list-style: none;
+      padding: 0;
+      
+      li {
+        margin-bottom: 0.5rem;
+      }
+      
+      a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    
+    i {
+      color: #e74c3c;
+      margin: 0 0.2rem;
     }
   }
 }
@@ -64,7 +535,7 @@ body {
   margin-bottom: 3rem;
   
   .hero-content {
-    max-width: 800px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 0 2rem;
   }
@@ -85,6 +556,7 @@ body {
     margin-bottom: 2rem;
     opacity: 0.9;
     line-height: 1.6;
+    color: white;
   }
   
   .hero-buttons {
@@ -135,10 +607,9 @@ body {
 .topics-section,
 .latest-posts-section,
 .newsletter-section {
-  max-width: 1200px;
+  max-width: 1800px;
   margin: 0 auto 3rem;
   padding: 0 2rem;
-  
   h2 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -151,7 +622,7 @@ body {
 // Topics grid
 .topics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -184,7 +655,7 @@ body {
 // Posts grid
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -252,7 +723,7 @@ body {
   }
   
   p {
-    opacity: 0.9;
+    color: white;
     margin-bottom: 2rem;
   }
 }
@@ -279,11 +750,44 @@ body {
   }
 }
 
-// Post content improvements
-.post-content {
-  max-width: 800px;
+// Page Layout (for static pages like About)
+.page {
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 2rem;
+  background: var(--bg-card);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.page-header {
+  background: var(--gradient-bg);
+  color: white;
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+  
+  .page-description {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+.page-content {
+  padding: 3rem 2rem;
   
   h1, h2, h3, h4, h5, h6 {
     color: var(--text-primary);
@@ -303,6 +807,10 @@ body {
     padding-bottom: 0.5rem;
   }
   
+  h3 {
+    font-size: 1.5rem;
+  }
+  
   p {
     margin-bottom: 1.5rem;
     color: var(--text-secondary);
@@ -319,77 +827,337 @@ body {
     }
   }
   
-  code {
-    background: var(--bg-light);
-    padding: 0.2rem 0.4rem;
-    border-radius: 0.25rem;
-    font-size: 0.9rem;
-    color: var(--text-primary);
+  ul, ol {
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+    
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
   }
   
-  pre {
-    background: var(--text-primary);
-    color: white;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    overflow-x: auto;
+  blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1.5rem;
     margin: 1.5rem 0;
-    
-    code {
-      background: none;
-      color: inherit;
-      padding: 0;
-    }
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    margin: 1.5rem 0;
   }
 }
 
-// Footer improvements
-.site-footer {
-  background: var(--text-primary);
-  color: white;
-  padding: 2rem 0;
-  margin-top: 4rem;
-  
-  .footer-heading {
-    color: white;
+// Enhanced Mobile Responsive Design
+// Mobile First - Base styles for mobile (320px+)
+@media (max-width: 480px) {
+  // Typography adjustments for small screens
+  body {
+    font-size: 14px;
+    line-height: 1.6;
   }
   
-  .contact-list,
-  .social-media-list {
-    a {
-      color: rgba(255, 255, 255, 0.8);
-      
-      &:hover {
-        color: white;
+  // Header adjustments
+  .site-header {
+    padding: 0.5rem 0;
+    
+    .wrapper {
+      padding: 0 1rem !important;
+    }
+    
+    .site-title {
+      font-size: 1.25rem;
+    }
+    
+    .site-nav {
+      .page-link {
+        font-size: 0.9rem;
+        padding: 0.5rem;
       }
     }
   }
+  
+  // Hero section mobile
+  .hero-section {
+    padding: 2rem 0;
+    
+    .hero-content {
+      padding: 0 1rem;
+    }
+    
+    .hero-title {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-buttons {
+      flex-direction: column;
+      gap: 0.75rem;
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+  
+  // Content sections mobile
+  .about-preview,
+  .topics-section,
+  .latest-posts-section,
+  .newsletter-section {
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+    
+    h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  // Grid layouts mobile
+  .topics-grid,
+  .posts-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .topic-card,
+  .post-card {
+    padding: 1.5rem;
+    
+    h3 {
+      font-size: 1.25rem;
+    }
+  }
+  
+  // Post layout mobile
+  .post {
+    margin: 0 1rem 1.5rem;
+    border-radius: 0.5rem;
+  }
+  
+  .post-header {
+    padding: 2rem 1rem 1.5rem;
+    
+    .post-title {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+    
+    .post-meta {
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      
+      > div {
+        justify-content: center;
+      }
+    }
+  }
+  
+  .post-content {
+    padding: 1.5rem 1rem;
+    
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    
+    pre {
+      margin: 1rem -1rem;
+      border-radius: 0;
+      font-size: 0.8rem;
+      
+      .copy-button {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 1.75rem;
+        height: 1.75rem;
+        
+        i {
+          font-size: 0.75rem;
+        }
+      }
+    }
+    
+    code {
+      font-size: 0.8rem;
+      padding: 0.2rem 0.4rem;
+    }
+  }
+  
+  // Navigation mobile
+  .post-navigation {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    
+    .prev-post,
+    .next-post {
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  }
+  
+  // Footer mobile
+  .site-footer {
+    padding: 2rem 0 1rem;
+    
+    .wrapper {
+      padding: 0 1rem !important;
+    }
+    
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+  
+  // Page layout mobile
+  .page {
+    margin: 0 1rem 1.5rem;
+    border-radius: 0.5rem;
+  }
+  
+  .page-header {
+    padding: 2rem 1rem 1.5rem;
+    
+    .page-title {
+      font-size: 1.75rem;
+    }
+    
+    .page-description {
+      font-size: 1rem;
+    }
+  }
+  
+  .page-content {
+    padding: 1.5rem 1rem;
+  }
 }
 
-// Responsive design
-@media (max-width: 768px) {
+// Tablet styles (481px - 768px)
+@media (min-width: 481px) and (max-width: 768px) {
   .hero-section {
     padding: 3rem 0;
     
     .hero-title {
-      font-size: 2rem;
+      font-size: 2.25rem;
     }
     
     .hero-subtitle {
-      font-size: 1.1rem;
+      font-size: 1.125rem;
     }
   }
   
   .topics-grid,
   .posts-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
   
   .about-preview,
   .topics-section,
   .latest-posts-section,
   .newsletter-section {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
+  }
+  
+  .post {
+    margin: 0 1.5rem 2rem;
+  }
+  
+  .post-header {
+    padding: 2.5rem 1.5rem 2rem;
+  }
+  
+  .post-content {
+    padding: 2rem 1.5rem;
+  }
+}
+
+// Desktop styles (769px+)
+@media (min-width: 769px) {
+  .hero-section {
+    padding: 4rem 0;
+  }
+  
+  .topics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+  
+  .posts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+}
+
+// Large desktop styles (1200px+)
+@media (min-width: 1200px) {
+  .hero-section {
+    padding: 5rem 0;
+    
+    .hero-title {
+      font-size: 3.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.375rem;
+    }
+  }
+  
+  .topics-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .posts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// Touch device optimizations
+@media (hover: none) and (pointer: coarse) {
+  .copy-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    
+    i {
+      font-size: 1rem;
+    }
+  }
+  
+  .btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .topic-card,
+  .post-card {
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+// High DPI display optimizations
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .copy-button {
+    border-width: 0.5px;
+  }
+  
+  .post,
+  .page,
+  .topic-card,
+  .post-card {
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
   }
 }
 
@@ -407,6 +1175,86 @@ body {
 
 .hero-section,
 .topic-card,
-.post-card {
+.post-card,
+.post {
   animation: fadeInUp 0.6s ease-out;
-} 
+}
+
+// Wider layout for post and home page
+.post,
+.about-preview,
+.latest-posts-section,
+.posts-grid {
+  max-width: 1800px;
+}
+
+// Make post cards a bit wider
+.post-card {
+  min-width: 400px;
+}
+
+// Override Minima theme container widths for 90% width layout
+.wrapper {
+  max-width: none !important;
+  width: 90% !important;
+  padding: 0 2rem !important;
+  margin: 0 auto !important;
+  
+  // Mobile responsive wrapper
+  @media (max-width: 480px) {
+    width: 95% !important;
+    padding: 0 1rem !important;
+  }
+  
+  @media (min-width: 481px) and (max-width: 768px) {
+    width: 92% !important;
+    padding: 0 1.5rem !important;
+  }
+}
+
+.site-header .wrapper {
+  max-width: none !important;
+  width: 90% !important;
+}
+
+.site-footer .wrapper {
+  max-width: none !important;
+  width: 90% !important;
+}
+
+// 90% width layout for main content
+.page-content {
+  width: 90% !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+}
+
+// Override any default Jekyll/Minima width constraints
+.container,
+.main-content,
+.content {
+  max-width: none !important;
+  width: 90% !important;
+  margin: 0 auto !important;
+}
+
+// Ensure body and html use full width but content is 90%
+html, body {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+// Override any remaining width constraints
+.site {
+  max-width: none !important;
+  width: 90% !important;
+  margin: 0 auto !important;
+}
+
+// Make sure the main content area uses 90% width
+main {
+  width: 90% !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+}

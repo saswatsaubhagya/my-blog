@@ -18,14 +18,54 @@ linkedin_username: saswatsaubhagya
 # Custom settings
 show_excerpts: true
 date_format: "%B %d, %Y"
+excerpt_separator: <!--more-->
+
+# Pagination
+paginate: 10
+paginate_path: "/blog/page:num/"
 
 # Navigation
 header_pages:
   - about.md
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:categories/:year/:month/:day/:title/
 
 # Build settings
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-archives
+
+# Jekyll Archives
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    category: '/category/:name/'
+    tag: '/tag/:name/'
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Saswat Saubhagya"
+      show_excerpts: true
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
   

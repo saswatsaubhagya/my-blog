@@ -1,6 +1,10 @@
 ---
-title: "Install Flutter on mac"
+title: "Install Flutter on Mac"
 date: 2022-01-02
+categories: [Flutter, Mobile Development]
+tags: [Flutter, macOS, iOS, Android, SDK, Development Environment]
+excerpt: "Learn how to install Flutter on macOS with this comprehensive guide. Set up your development environment, configure your path, and get ready to build amazing cross-platform apps."
+author: "Saswat Saubhagya"
 ---
 
 # Installing Flutter on macOS: A Comprehensive Guide
@@ -96,3 +100,4 @@ Now, run the `flutter doctor` command. This command checks your environment and 
 
 ```bash
 flutter doctor
+```

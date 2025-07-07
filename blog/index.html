@@ -1,0 +1,44 @@
+---
+layout: default
+title: "Blog"
+paginate: true
+---
+
+<h1>Blog</h1>
+<div class="posts-grid">
+  {% for post in paginator.posts %}
+    <article class="post-card">
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <div class="post-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">
+          <i class="fas fa-calendar-alt"></i>
+          {{ post.date | date: site.date_format }}
+        </time>
+        {% if post.categories.size > 0 %}
+          <div class="post-categories">
+            <i class="fas fa-folder"></i>
+            {% for category in post.categories %}
+              <span class="category">{{ category }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      <p class="post-excerpt">
+        {{ post.excerpt | strip_html | truncate: 150 }}
+      </p>
+      <a href="{{ post.url | relative_url }}" class="read-more">
+        Read More <i class="fas fa-arrow-right"></i>
+      </a>
+    </article>
+  {% endfor %}
+</div>
+
+<div class="pagination" style="text-align:center; margin-top:2rem;">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}" class="btn btn-secondary">&laquo; Previous</a>
+  {% endif %}
+  <span style="margin:0 1rem;">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}" class="btn btn-secondary">Next &raquo;</a>
+  {% endif %}
+</div> 
